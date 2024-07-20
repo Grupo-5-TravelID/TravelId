@@ -15,14 +15,14 @@ INSERT INTO hoteles (nombre, categoria, descripcion, contacto, id_localizacion) 
 INSERT INTO hoteles (nombre, categoria, descripcion, contacto, id_localizacion) VALUES ('Hotel 6', 2, 'Descripción del Hotel 6', 'contacto6@example.com', (SELECT id FROM localizaciones WHERE nombre = 'Localizacion 2'));
 
 -- Insertar datos en la tabla de imagenes
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Hilton_Vienna_Plaza.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 1'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Hotel_Artemide_2.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 1'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 2'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Nobu_Hotel.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 3'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Radisson_Blu_Hotel_Berlin.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 3'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 4'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 5'));
-INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 6'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Hilton_Vienna_Plaza.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 1'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Hotel_Artemide_2.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 1'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 2'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Nobu_Hotel.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 3'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Radisson_Blu_Hotel_Berlin.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 3'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 4'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 5'));
+-- INSERT INTO imagenes (url, id_hotel) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', (SELECT id FROM hoteles WHERE nombre = 'Hotel 6'));
 
 -- Insertar datos en la tabla de companias
 INSERT INTO companias_vuelo (nombre, contacto) VALUES ('Compania 1', 'contacto1@compania.com');

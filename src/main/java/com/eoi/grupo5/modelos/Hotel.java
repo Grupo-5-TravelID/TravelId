@@ -37,7 +37,7 @@ public class Hotel {
     private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fkHotelesLocal"), nullable = false)
+    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fkHotelesLocal"))
     private Localizacion localizacion;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -179,7 +179,7 @@
                 <a th:href="@{'/hotel/' + ${hotel.id}}" class="w-100 w-auto-sm">
                   <div class="single-package-item">
                   <!-- Mostrar la primera imagen del hotel o una imagen por defecto si no tiene imágenes -->
-                  <img th:src="@{${hotel.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : ${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del Hotel"/>
+                  <img th:src="@{${hotel.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : '/imagenes/' + ${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del Hotel"/>
 
                   <div class="single-package-item-txt">
                     <h3 class="d-block d-sm-none d-xl-block">
@@ -192,7 +192,7 @@
                       <p>
                         <span class="d-inline-block">
                             <i class="fa fa-angle-right"></i>
-                            <span class="d-inline-block" th:text="${hotel.localizacion.nombre}"> Berlín, Alemania</span>
+<!--                            <span class="d-inline-block" th:text="${hotel.localizacion.nombre}"> Berlín, Alemania</span>-->
                         </span>
                       </p>
                       <p>

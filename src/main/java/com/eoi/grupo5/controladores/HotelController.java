@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -55,5 +56,10 @@ public class HotelController {
         }
 
     }
+
+//    @PostMapping("/hotel/crear")
+//    public String crearHotel(Model modelo) {
+//        return "hoteles";
+//    }
 
 }
