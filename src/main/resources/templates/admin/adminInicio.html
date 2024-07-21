@@ -59,32 +59,7 @@
     <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
     <div class="container pt-5">
-
-        <button type="button" class="btn btn-outline-info mb-3">
-            <a class="text-decoration-none text-dark" th:href="@{'/admin/hoteles/crear'}">Crear Hotel</a>
-        </button>
-
-        <table class="table table-striped">
-            <thead>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <tr th:each="hotel : ${hoteles}">
-                    <td th:text="${hotel.id}"></td>
-                    <td th:text="${hotel.nombre}"></td>
-                    <td class="d-flex gap-2">
-                        <form th:action="@{'/admin/hoteles/' + ${hotel.id}}" th:method="get">
-                            <button type="submit" class="btn btn-outline-info">Actualizar</button>
-                        </form>
-                        <form th:action="@{'/admin/hoteles/eliminar/' + ${hotel.id}}" th:method="delete">
-                            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <h1>Bienvenido [[${username}]] !!!</h1>
     </div>
 
     <script th:src="@{/js/jquery-3.2.1.min.js}"></script>

@@ -5,6 +5,7 @@ import com.eoi.grupo5.modelos.Imagen;
 import com.eoi.grupo5.servicios.ServicioHabitacion;
 import com.eoi.grupo5.servicios.ServicioHotel;
 import com.eoi.grupo5.servicios.ServicioImagen;
+import com.eoi.grupo5.servicios.ServicioLocalizacion;
 import com.eoi.grupo5.servicios.archivos.FileSystemStorageService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
@@ -21,18 +22,18 @@ import java.util.Optional;
 public class AdminHotelController {
 
     private final ServicioHotel servicioHotel;
-
     private final ServicioHabitacion servicioHabitacion;
-
     private final ServicioImagen servicioImagen;
+    private final ServicioLocalizacion servicioLocalizacion;
 
     private final FileSystemStorageService fileSystemStorageService;
 
 
-    public AdminHotelController(ServicioHotel servicioHotel, ServicioHabitacion servicioHabitacion, ServicioImagen servicioImagen, FileSystemStorageService fileSystemStorageService) {
+    public AdminHotelController(ServicioHotel servicioHotel, ServicioHabitacion servicioHabitacion, ServicioImagen servicioImagen, ServicioLocalizacion servicioLocalizacion, FileSystemStorageService fileSystemStorageService) {
         this.servicioHotel = servicioHotel;
         this.servicioHabitacion = servicioHabitacion;
         this.servicioImagen = servicioImagen;
+        this.servicioLocalizacion = servicioLocalizacion;
         this.fileSystemStorageService = fileSystemStorageService;
     }
 
@@ -48,12 +49,10 @@ public class AdminHotelController {
         Optional<Hotel> hotel = servicioHotel.encuentraPorId(id);
         // Si no encontramos el hotel no hemos encontrado el hotel
         if(hotel.isPresent()) {
-//            String hotelImagen = hotel.get().getImagenesHotel().stream().findFirst().get().getUrl();
-            modelo.addAttribute("recomendados", servicioHotel.obtenerHotelesEnTuZona(hotel.get()));
             modelo.addAttribute("hotel",hotel.get());
-//            modelo.addAttribute("imagenHotel", hotelImagen);
             modelo.addAttribute("preciosActuales",
                     servicioHabitacion.obtenerPreciosActualesHabitacionesHotel(hotel.get()));
+            modelo.addAttribute("localizaciones", servicioLocalizacion.buscarEntidades());
 
         return "admin/detallesHotel";
         } else {
@@ -63,8 +62,15 @@ public class AdminHotelController {
 
     }
 
+    @GetMapping("/crear")
+    public String mostrarPaginaCrearHotel(Model modelo) {
+        Hotel hotel = new Hotel();
+        modelo.addAttribute("hotel", hotel);
+        return "admin/nuevoHotel";
+    }
+
     @PostMapping("/crear")
-    public String crearHotel(Model modelo, @RequestParam(name = "imagen") MultipartFile imagen, @ModelAttribute("hotel") Hotel hotel) {
+    public String crearHotel(@RequestParam(name = "imagen") MultipartFile imagen, @ModelAttribute("hotel") Hotel hotel) {
 
         try {
 
@@ -86,6 +92,15 @@ public class AdminHotelController {
             throw new RuntimeException(e);
         }
 
+        return "redirect:/admin/hoteles";
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarHotel(@PathVariable Integer id) {
+        Optional<Hotel> optionalHotel = servicioHotel.encuentraPorId(id);
+        if(optionalHotel.isPresent()) {
+            servicioHotel.eliminarPorId(id);
+        }
         return "redirect:/admin/hoteles";
     }
 

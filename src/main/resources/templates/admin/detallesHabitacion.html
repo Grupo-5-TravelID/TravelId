@@ -60,45 +60,47 @@
       <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
       <div class="container pt-5">
-        <form class="d-flex gap-3 flex-column" action="/admin/hoteles/crear" method="post" enctype="multipart/form-data" th:object="${hotel}">
-          <input type="hidden" name="id" id="id" th:value="${hotel.id}" th:field="*{id}">
+        <form class="d-flex gap-3 flex-column" action="/admin/habitaciones/crear" method="post" enctype="multipart/form-data" th:object="${habitacion}">
+          <input type="hidden" name="id" id="id" th:value="${habitacion.id}" th:field="*{id}">
 
           <div class="form-group">
-            <label for="nombre">Nombre del Hotel</label>
-            <input type="text" class="form-control" id="nombre" th:value="${hotel.nombre}" th:field="*{nombre}">
-          </div>
-
-          <!--
-          <div class="form-group">
-            <label for="localizacionNombre">Localización</label>
-            <input type="text" class="form-control" id="localizacionNombre" th:value="${hotel.localizacion.nombre}" th:field="*{localizacion.nombre}">
-          </div>
-          -->
-
-          <div class="form-group">
-            <label for="categoria">Categoría</label>
-            <input type="number" class="form-control" id="categoria" th:value="${hotel.categoria}" th:field="*{categoria}">
-          </div>
-
-          <div class="form-group">
-            <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" th:value="${hotel.descripcion}" th:field="*{descripcion}">
-          </div>
-
-          <div class="form-group">
-            <label for="contacto">Contacto</label>
-            <input type="text" class="form-control" id="contacto" th:value="${hotel.contacto}" th:field="*{contacto}">
-          </div>
-
-          <div class="form-group">
-            <label for="localizacion">Hotel:</label>
-            <select class="form-control" id="localizacion" th:field="*{localizacion.id}">
-              <option th:each="localizacion : ${localizaciones}" th:value="${localizacion.id}" th:text="${localizacion.nombre}" th:selected="${localizacion.id != null and hotel.localizacion.id == localizacion.id}"></option>
+            <label for="tipoNombre">Tipo de Habitación:</label>
+            <select class="form-control" id="tipoNombre" th:field="*{tipo.id}">
+              <option th:each="tipo : ${tiposHabitacion}" th:value="${tipo.id}" th:text="${tipo.nombre}" th:selected="${habitacion.tipo != null and habitacion.tipo.id == tipo.id}"></option>
             </select>
           </div>
 
           <div class="form-group">
-            <input type="hidden" name="habitaciones" th:field="*{habitaciones}">
+            <label for="numero">Número de Habitación:</label>
+            <input type="number" class="form-control" id="numero" th:value="${habitacion.numero}" th:field="*{numero}">
+          </div>
+
+          <div class="form-group">
+            <label for="capacidad">Capacidad:</label>
+            <input type="text" class="form-control" id="capacidad" th:value="${habitacion.capacidad}" th:field="*{capacidad}">
+          </div>
+
+          <div class="form-group">
+            <label for="numeroCamas">Número de Camas:</label>
+            <input type="text" class="form-control" id="numeroCamas" th:value="${habitacion.numeroCamas}" th:field="*{numeroCamas}">
+          </div>
+
+          <div class="form-group">
+            <label for="hotelNombre">Hotel:</label>
+            <select class="form-control" id="hotelNombre" th:field="*{hotel.id}">
+              <option th:each="hotel : ${hoteles}" th:value="${hotel.id}" th:text="${hotel.nombre}" th:selected="${habitacion.hotel != null and habitacion.hotel.id == hotel.id}"></option>
+            </select>
+          </div>
+
+<!--          <div class="form-group">-->
+<!--            <label for="precio">Precio Actual Habitación:</label>-->
+<!--            <input type="text" class="form-control" name="precio" id="precio" th:value="${precioActual.precio}" th:field="*{precio}">-->
+<!--          </div>-->
+
+          <div class="form-group">
+            <label for="descripcion">Descripción:</label><br/>
+            <textarea name="tipo.descripcion" id="descripcion" cols="30" rows="10"
+                      th:text="${habitacion.tipo.descripcion}" readonly></textarea>
           </div>
 
           <div class="form-group">
@@ -109,8 +111,6 @@
           <button type="submit" class="btn btn-primary mt-3">Guardar</button>
         </form>
       </div>
-
-
 
 
 

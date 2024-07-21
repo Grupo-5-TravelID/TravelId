@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hoteles</title>
+    <title>Habitaciones</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Travelix Project" />
@@ -61,7 +61,7 @@
     <div class="container pt-5">
 
         <button type="button" class="btn btn-outline-info mb-3">
-            <a class="text-decoration-none text-dark" th:href="@{'/admin/hoteles/crear'}">Crear Hotel</a>
+            <a class="text-decoration-none text-dark" th:href="@{'/admin/habitaciones/crear'}">Crear Habitación</a>
         </button>
 
         <table class="table table-striped">
@@ -71,14 +71,14 @@
                 <th></th>
             </thead>
             <tbody>
-                <tr th:each="hotel : ${hoteles}">
-                    <td th:text="${hotel.id}"></td>
-                    <td th:text="${hotel.nombre}"></td>
+                <tr th:each="habitacion : ${habitaciones}">
+                    <td th:text="${habitacion.id}"></td>
+                    <td th:text="${habitacion.tipo.nombre}"></td>
                     <td class="d-flex gap-2">
-                        <form th:action="@{'/admin/hoteles/' + ${hotel.id}}" th:method="get">
+                        <form th:action="@{'/admin/habitaciones/' + ${habitacion.id}}" th:method="get">
                             <button type="submit" class="btn btn-outline-info">Actualizar</button>
                         </form>
-                        <form th:action="@{'/admin/hoteles/eliminar/' + ${hotel.id}}" th:method="delete">
+                        <form th:action="@{'/admin/habitaciones/eliminar/' + ${habitacion.id}}" th:method="delete">
                             <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                         </form>
                     </td>

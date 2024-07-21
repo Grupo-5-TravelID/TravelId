@@ -33,7 +33,7 @@ public class Hotel {
     @Column(name = "contacto", length = 45)
     private String contacto;
 
-    @OneToMany(mappedBy = "hotel")
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToOne

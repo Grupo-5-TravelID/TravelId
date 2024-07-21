@@ -2,6 +2,7 @@ package com.eoi.grupo5.controladores;
 
 import com.eoi.grupo5.modelos.Hotel;
 
+import com.eoi.grupo5.modelos.Imagen;
 import com.eoi.grupo5.modelos.Precio;
 import com.eoi.grupo5.servicios.ServicioHabitacion;
 import com.eoi.grupo5.servicios.ServicioHotel;
@@ -42,10 +43,13 @@ public class HotelController {
         Optional<Hotel> hotel = servicioHotel.encuentraPorId(id);
         // Si no encontramos el hotel no hemos encontrado el hotel
         if(hotel.isPresent()) {
-            String hotelImagen = hotel.get().getImagenesHotel().stream().findFirst().get().getUrl();
+            Optional<Imagen> optionalHotelImagen = hotel.get().getImagenesHotel().stream().findFirst();
+            if(optionalHotelImagen.isPresent()) {
+                String hotelImagen = optionalHotelImagen.get().getUrl();
+                modelo.addAttribute("imagenHotel", hotelImagen);
+            }
             modelo.addAttribute("recomendados", servicioHotel.obtenerHotelesEnTuZona(hotel.get()));
             modelo.addAttribute("hotel",hotel.get());
-            modelo.addAttribute("imagenHotel", hotelImagen);
             modelo.addAttribute("preciosActuales",
                     servicioHabitacion.obtenerPreciosActualesHabitacionesHotel(hotel.get()));
 
