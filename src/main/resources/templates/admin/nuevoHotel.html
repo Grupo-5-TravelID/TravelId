@@ -82,6 +82,13 @@
             </div>
 
             <div class="form-group">
+              <label for="localizacion">Localización:</label>
+              <select class="form-control" name="localizacion" id="localizacion" th:field="*{localizacion.id}">
+                <option  th:each="localizacion : ${localizaciones}" th:value="${localizacion.id}" th:text="${localizacion.nombre}" th:selected="${hotel.localizacion != null and hotel.localizacion.id == localizacion.id}"></option>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="imagen">Imagen:</label>
               <input type="file" class="form-control-file" name="imagen" id="imagen">
             </div>

@@ -66,6 +66,7 @@ public class AdminHotelController {
     public String mostrarPaginaCrearHotel(Model modelo) {
         Hotel hotel = new Hotel();
         modelo.addAttribute("hotel", hotel);
+        modelo.addAttribute("localizaciones", servicioLocalizacion.buscarEntidades());
         return "admin/nuevoHotel";
     }
 
