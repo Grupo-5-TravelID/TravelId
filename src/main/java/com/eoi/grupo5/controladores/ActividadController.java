@@ -10,6 +10,7 @@ import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
 import com.eoi.grupo5.servicios.ServicioActividad;
 import com.eoi.grupo5.servicios.ServicioTipoActividad;
 import com.eoi.grupo5.servicios.filtros.ServicioFiltroActividades;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,21 +51,20 @@ public class ActividadController {
             modelo.addAttribute("error", "Debe seleccionar ambas fechas: Fecha de inicio y Fecha de fin.");
         } else {
             if(criteria.getTipoId() == null) {
-                List<Actividad> actividades;
-                if(criteria.getFechaInicio() != null) {
-                    actividades = servicioActividad.buscarPorFechas(criteria.getFechaInicio(), criteria.getFechaFin());
-                } else {
-                    actividades = servicioActividad.buscarEntidades();
-                }
-                modelo.addAttribute("lista", actividades);
-                modelo.addAttribute("preciosActuales", servicioActividad.obtenerPreciosActualesActividades(actividades));
+                PaginaRespuestaActividades<ActividadDto> actividades;
+                actividades = servicioFiltroActividades.buscarActividades(actividadesMapper.filtrar(criteria), criteria.getPage(), criteria.getSize());
+                modelo.addAttribute("page", actividades);
+                modelo.addAttribute("lista", actividades.getContent());
+                modelo.addAttribute("preciosActuales", servicioActividad
+                        .obtenerPreciosActualesActividades(servicioActividad.buscarEntidades()));
                 modelo.addAttribute("tiposActividad", servicioTipoActividad.buscarEntidades());
                 return "actividades";
             } else {
+
                 PaginaRespuestaActividades<ActividadDto> actividades = servicioFiltroActividades
                         .buscarActividades(actividadesMapper.filtrar(criteria), criteria.getPage(), criteria.getSize());
-                modelo.addAttribute("lista",actividades);
-
+                modelo.addAttribute("page",actividades);
+                modelo.addAttribute("lista", actividades.getContent());
                 // Obtener los precios actuales de las habitaciones del hotel
                 LocalDateTime fechaActual = LocalDateTime.now();
                 Map<Integer, Double> preciosActuales = new HashMap<>();

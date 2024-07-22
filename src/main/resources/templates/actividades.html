@@ -79,6 +79,13 @@
                 <input type="datetime-local" name="fechaFin" id="fechaFin"/>
             </div>
 
+            <input type="hidden" name="page" value="0">
+
+            <div class="filter-group">
+                <label for="size">Tamaño Página:</label>
+                <input type="number" name="size" id="size"/>
+            </div>
+
             <div class="filter-group">
                 <button type="submit">APLICAR BÚSQUEDA</button>
             </div>
@@ -164,6 +171,30 @@
                 <!--/.row-->
             </div>
             <!--/.packages-content-->
+
+            <!-- Paginación -->
+            <div class="d-flex justify-content-center">
+                <ul class="pagination d-flex gap-3" th:if="${page != null}">
+                    <li th:if="${page.hasPrevious()}">
+                        <a th:href="@{/filtrar-actividades(page=${page.page - 1}, size=${page.size})}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
+                        th:classappend="${i == page.page} ? 'active' : ''">
+                        <a th:href="@{/filtrar-actividades(page=${i}, size=${page.size})}" th:text="${i + 1}"></a>
+                    </li>
+
+                    <li th:if="${page.hasNext()}">
+                        <a th:href="@{/filtrar-actividades(page=${page.page + 1}, size=${page.size})}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
         </div>
         <!--/.container-->
     </section>
@@ -182,5 +213,7 @@
 <script th:src="@{/plugins/easing/easing.js}"></script>
 <script th:src="@{/plugins/parallax-js-master/parallax.min.js}"></script>
 <script th:src="@{/js/offers_custom.js}"></script>
+<script th:src="@{/plugins/colorbox/jquery.colorbox-min.js}"></script>
+
 </body>
 </html>

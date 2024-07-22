@@ -45,7 +45,7 @@ public class Habitacion {
     @OneToMany(mappedBy = "habitacionImagen",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Imagen> imagenesHabitacion = new HashSet<>();
 
-    @OneToMany(mappedBy = "habitacion")
-    private List<Precio> precio;
+    @OneToMany(mappedBy = "habitacion", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Precio> precio = new HashSet<>();
 
 }

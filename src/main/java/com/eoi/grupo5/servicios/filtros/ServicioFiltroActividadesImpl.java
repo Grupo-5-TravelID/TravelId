@@ -26,7 +26,7 @@ public class ServicioFiltroActividadesImpl implements ServicioFiltroActividades 
     @Override
     public PaginaRespuestaActividades<ActividadDto> buscarActividades(FiltroActividades filtro, int page, int size) {
         Specification<Actividad> spec = ActividadSpec.filtrarPor(filtro);
-        Page<Actividad> resultadoPagina = repoActividad.findAllBy(spec, PageRequest.of(page, size));
+        Page<Actividad> resultadoPagina = repoActividad.findAll(spec, PageRequest.of(page, size));
         return actividadMapper.paginaRespuestaActividades(resultadoPagina);
     }
 }

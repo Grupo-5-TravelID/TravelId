@@ -5,8 +5,10 @@ import com.eoi.grupo5.modelos.Habitacion;
 import com.eoi.grupo5.modelos.Hotel;
 import com.eoi.grupo5.modelos.Precio;
 import com.eoi.grupo5.repos.RepoActividad;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -42,10 +44,6 @@ public class ServicioActividad extends AbstractBusinessServiceSoloEnt<Actividad,
         });
 
         return preciosActuales;
-    }
-
-    public List<Actividad> buscarPorFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-        return getRepo().findByFechaInicioGreaterThanEqualAndFechaFinLessThanEqual(fechaInicio, fechaFin);
     }
 
 }
