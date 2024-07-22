@@ -84,7 +84,6 @@ public class AdminHabitacionController {
 
             String FILE_NAME;
 
-
             Hotel hotel = servicioHotel.encuentraPorId(hotelId).get();
             habitacion.setHotel(hotel);
 

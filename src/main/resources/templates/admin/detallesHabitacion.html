@@ -54,12 +54,12 @@
     />
   </head>
 
-  <body class="vh-100">
+  <body>
 
       <header th:replace="~{admin/fragments/fragments :: adminHeader}"></header>
       <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
-      <div class="container pt-5">
+      <div class="container main">
         <form class="d-flex gap-3 flex-column" action="/admin/habitaciones/crear" method="post" enctype="multipart/form-data" th:object="${habitacion}">
           <input type="hidden" name="id" id="id" th:value="${habitacion.id}" th:field="*{id}">
 

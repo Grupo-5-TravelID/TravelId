@@ -53,12 +53,12 @@
             th:href="@{/styles/admin_responsive.css}"
     />
 </head>
-<body class="vh-100">
+<body>
 
     <header th:replace="~{admin/fragments/fragments :: adminHeader}"></header>
     <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
-    <div class="container pt-5">
+    <div class="container main">
         <h1>Bienvenido [[${username}]] !!!</h1>
     </div>
 

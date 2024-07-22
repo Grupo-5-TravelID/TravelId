@@ -289,7 +289,7 @@ section {
 *********************************/
 
 .header {
-  position: fixed;
+  position: absolute;
   width: 100%;
   background: rgba(12, 58, 95, 0.7);
   z-index: 12;

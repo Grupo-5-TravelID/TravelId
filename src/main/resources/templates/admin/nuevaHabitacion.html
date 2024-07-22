@@ -54,12 +54,12 @@
     />
   </head>
 
-  <body class="vh-100">
+  <body>
 
       <header th:replace="~{admin/fragments/fragments :: adminHeader}"></header>
       <div th:replace="~{layout/plantilla :: navMobile}"></div>
 
-        <div class="container w-50 d-flex justify-content-center pt-5">
+        <div class="container w-50 d-flex justify-content-center main">
           <form class="d-flex gap-3 flex-column" action="/admin/habitaciones/crear" method="post" enctype="multipart/form-data" th:object="${habitacion}">
             <div class="form-group">
               <label for="tipoNombre">Tipo de Habitación</label>

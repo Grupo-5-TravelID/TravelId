@@ -286,7 +286,7 @@ section {
 *********************************/
 
 .header {
-  position: static;
+  position: absolute;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: 12;
@@ -470,7 +470,6 @@ section {
 .menu_content {
   width: 100%;
   height: 100%;
-  justify-content: start !important;
 }
 .menu_item {
   position: relative;
@@ -1045,4 +1044,8 @@ h3 span {
 }
 .single-package-item:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.main {
+  padding-top: 200px;
 }
