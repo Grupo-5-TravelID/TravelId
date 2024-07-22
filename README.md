@@ -17,7 +17,9 @@ Para proceder a la instalación y ejecución de la aplicación, debemos seguir l
 # EJECUCIÓN
 
 - Arrancar el proyecto en el perfil de ejecución "desarrollo" activada
+
 - Entrar a localhost:8080 con un navegador
+
 - Entrar a localhost:8080 con un navegador tp://lo calhost8080/" con un navegador
 
 Reservas de Habitación:
