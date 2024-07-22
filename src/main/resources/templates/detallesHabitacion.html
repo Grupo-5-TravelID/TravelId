@@ -98,8 +98,12 @@
                                     <span th:text="${habitacion.numeroCamas}"></span>
                                     <i class="fa fa-bed" aria-hidden="true"></i>
                                     <div class="hotel_location"
-                                         th:text="${precioActual} + ' €'">
+                                         th:if="${precioActual != null}" th:text="${precioActual} + ' €'">
                                         Precio Habitación
+                                    </div>
+                                    <div class="hotel_location"
+                                         th:if="${precioActual == null}">
+                                        Precio No Disponible
                                     </div>
                                 </div>
                                 <div class="hotel_title_button ml-lg-auto text-lg-right">

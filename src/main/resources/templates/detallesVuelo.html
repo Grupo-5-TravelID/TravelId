@@ -114,7 +114,7 @@
                   <!-- Image -->
 
                   <div class="hotel_image" th:object="${vuelo}">
-                    <img th:src="@{${imagenVuelo}}" alt="Imagen del vuelo" />
+                    <img th:src="@{${vuelo.imagen == null} ? '/images/Hoteles/Nobu_Hotel.jpg' : ${imagenVuelo}}" alt="Imagen del vuelo" />
                   </div>
 
                   <!-- vuelo Info Text -->

@@ -59,11 +59,11 @@ INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VA
 INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (114, 3, 1, 1, 3);
 INSERT INTO habitaciones (numero, capacidad, numero_camas, id_tipo, id_hotel) VALUES (115, 4, 2, 2, 3);
 
-INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 6);
-INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 7);
-INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 8);
-INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 9);
-INSERT INTO imagenes (url, id_habitacion) VALUES ('/images/Hoteles/Melia_Madrid_Princesa.jpg', 10);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('Nobu_hotel.jpg', 6);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('Nobu_hotel.jpg', 7);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('Nobu_hotel.jpg', 8);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('Nobu_hotel.jpg', 9);
+INSERT INTO imagenes (url, id_habitacion) VALUES ('Nobu_hotel.jpg', 10);
 
 # Inserción de tipos de actividad
 INSERT INTO tipo_actividad (nombre, descripcion) VALUES ('Acuática', 'Actividades relacionadas con el agua, como natación, buceo, etc.');
