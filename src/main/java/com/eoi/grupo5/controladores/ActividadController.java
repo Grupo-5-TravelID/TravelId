@@ -61,6 +61,7 @@ public class ActividadController {
                 return "actividades";
             } else {
 
+                modelo.addAttribute("tipoId", criteria.getTipoId());
                 PaginaRespuestaActividades<ActividadDto> actividades = servicioFiltroActividades
                         .buscarActividades(actividadesMapper.filtrar(criteria), criteria.getPage(), criteria.getSize());
                 modelo.addAttribute("page",actividades);

@@ -83,7 +83,7 @@
 
             <div class="filter-group">
                 <label for="size">Tamaño Página:</label>
-                <input type="number" name="size" id="size"/>
+                <input type="number" name="size" id="size" min="1"/>
             </div>
 
             <div class="filter-group">
@@ -175,24 +175,34 @@
             <!-- Paginación -->
             <div class="d-flex justify-content-center">
                 <ul class="pagination d-flex gap-3" th:if="${page != null}">
-                    <li th:if="${page.hasPrevious()}">
-                        <a th:href="@{/filtrar-actividades(page=${page.page - 1}, size=${page.size})}" aria-label="Previous">
+                    <!-- Página anterior -->
+                    <li th:if="${page.hasPrevious()}" class="page-item">
+                        <a class="page-link"
+                           th:href="@{/filtrar-actividades(page=${page.page - 1}, size=${page.size}, tipoId=${tipoId})}"
+                           aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
 
+                    <!-- Páginas numeradas -->
                     <li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
-                        th:classappend="${i == page.page} ? 'active' : ''">
-                        <a th:href="@{/filtrar-actividades(page=${i}, size=${page.size})}" th:text="${i + 1}"></a>
+                        th:classappend="${i == page.page} ? 'page-item active' : 'page-item'">
+                        <a class="page-link"
+                           th:href="@{/filtrar-actividades(page=${i}, size=${page.size}, tipoId=${tipoId})}"
+                           th:text="${i + 1}"></a>
                     </li>
 
-                    <li th:if="${page.hasNext()}">
-                        <a th:href="@{/filtrar-actividades(page=${page.page + 1}, size=${page.size})}" aria-label="Next">
+                    <!-- Página siguiente -->
+                    <li th:if="${page.hasNext()}" class="page-item">
+                        <a class="page-link"
+                           th:href="@{/filtrar-actividades(page=${page.page + 1}, size=${page.size}, tipoId=${tipoId})}"
+                           aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
                 </ul>
             </div>
+
 
 
         </div>
