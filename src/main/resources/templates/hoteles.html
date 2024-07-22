@@ -179,7 +179,7 @@
                 <a th:href="@{'/hotel/' + ${hotel.id}}" class="w-100 w-auto-sm">
                   <div class="single-package-item">
                   <!-- Mostrar la primera imagen del hotel o una imagen por defecto si no tiene imágenes -->
-                  <img th:src="@{${hotel.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : ${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del Hotel"/>
+                  <img th:src="@{${hotel.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : '/imagenes/' + ${hotel.imagenesHotel.stream().findFirst().get().url}}" alt="Imagen del Hotel"/>
 
                   <div class="single-package-item-txt">
                     <h3 class="d-block d-sm-none d-xl-block">
@@ -208,9 +208,6 @@
                       <p>
                         <i class="fa fa-star" th:each="i : ${#numbers.sequence(1, hotel.categoria, 1)}"></i>
                       </p>
-                    </div>
-                    <div class="about-btn">
-                      <button class="about-view packages-btn">Reservar</button>
                     </div>
                   </div>
                 </div>

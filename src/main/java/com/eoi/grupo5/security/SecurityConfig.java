@@ -48,6 +48,7 @@ public class SecurityConfig {
                 .requestMatchers("/plugins/**").permitAll()
                 .requestMatchers("/styles/**").permitAll()
                 .requestMatchers("/fonts/**").permitAll()
+                .requestMatchers("/imagenes/**").permitAll()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/register").permitAll()
                 .requestMatchers("/vuelos/**").permitAll()
@@ -56,6 +57,8 @@ public class SecurityConfig {
                 .requestMatchers("/filtrar-actividades").permitAll()
                 .requestMatchers("/conocenos/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login/").permitAll()
+                //.requestMatchers(HttpMethod.POST, "/upload/**").permitAll()
+                .requestMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated();
 
         http.csrf().disable();

@@ -13,7 +13,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServicioFiltroActividadesImpl implements ServicioFiltroActividades{
+public class ServicioFiltroActividadesImpl implements ServicioFiltroActividades {
 
     private final RepoActividad repoActividad;
     private final ActividadesMapper actividadMapper;

@@ -27,8 +27,11 @@ public class HabitacionController {
         if (habitacion.isPresent()) {
 
             modelo.addAttribute("habitacion", habitacion.get());
+
+            if(!habitacion.get().getPrecio().isEmpty()) {
             Precio precioActual = servicio.getPrecioActual(habitacion.get(), LocalDateTime.now());
             modelo.addAttribute("precioActual", precioActual.getPrecio());
+            }
 
             if(!habitacion.get().getImagenesHabitacion().isEmpty()) {
                 String habitacionImagen = habitacion.get().getImagenesHabitacion().stream().findFirst().get().getUrl();

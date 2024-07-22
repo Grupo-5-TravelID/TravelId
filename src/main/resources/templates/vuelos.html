@@ -176,7 +176,7 @@
                 <a th:href="@{'/vuelo/' + ${vuelo.id}}" class="w-100 w-auto-sm">
                   <div class="single-package-item">
                     <!-- Mostrar la primera imagen del hotel o una imagen por defecto si no tiene imágenes -->
-                    <img th:src="@{${vuelo.imagen.getUrl()}} " alt="Imagen del Vuelo"/>
+                    <img th:src="@{${vuelo.imagen == null} ? '/images/Hoteles/Nobu_Hotel.jpg' : '/imagenes/' + ${vuelo.imagen.url}}" alt="Imagen del Vuelo"/>
 
                     <div class="single-package-item-txt">
                       <h3 class="d-block d-sm-none d-xl-block">

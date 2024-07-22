@@ -36,10 +36,12 @@ public class VueloController {
         Optional<Vuelo> vuelo = servicioVuelo.encuentraPorId(id);
         // Si no encontramos el vuelo no hemos encontrado el hotel
         if(vuelo.isPresent()) {
+            if(vuelo.get().getImagen() != null) {
             String vueloImagen = vuelo.get().getImagen().getUrl();
+                modelo.addAttribute("imagenVuelo", vueloImagen);
+            }
             //modelo.addAttribute("recomendados", servicioVuelo.obtenerHotelesEnTuZona(vuelo.get()));
             modelo.addAttribute("vuelo",vuelo.get());
-            modelo.addAttribute("imagenVuelo", vueloImagen);
             modelo.addAttribute("preciosActuales",
                     servicioAsiento.obtenerPreciosActualesAsientosVuelo(vuelo.get()));
 
