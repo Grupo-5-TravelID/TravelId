@@ -13,12 +13,21 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class ServicioActividad extends AbstractBusinessServiceSoloEnt<Actividad, Integer, RepoActividad>{
 
     protected ServicioActividad(RepoActividad repoActividad) {
         super(repoActividad);
+    }
+
+    public List<Actividad> obtenerActividadesEnTuZona(Actividad actividad) {
+        return super.buscarEntidades()
+                .stream()
+                .filter(a -> a.getLocalizacion().getNombre().equals(actividad.getLocalizacion().getNombre()) && !Objects.equals(a.getId(), actividad.getId()))
+                .limit(2)
+                .toList();
     }
 
 

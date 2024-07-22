@@ -3,6 +3,8 @@ package com.eoi.grupo5.controladores;
 import com.eoi.grupo5.controladores.criteria.BusquedaCriteriaActividades;
 import com.eoi.grupo5.mapper.ActividadesMapper;
 import com.eoi.grupo5.modelos.Actividad;
+import com.eoi.grupo5.modelos.Hotel;
+import com.eoi.grupo5.modelos.Imagen;
 import com.eoi.grupo5.modelos.Precio;
 
 import com.eoi.grupo5.modelos.filtros.ActividadDto;
@@ -14,6 +16,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -44,6 +47,29 @@ public class ActividadController {
         return "actividades";
     }
 
+    @GetMapping("/actividad/{id}")
+    public String detallesHotel(Model modelo, @PathVariable Integer id) {
+        Optional<Actividad> actividad = servicioActividad.encuentraPorId(id);
+        // Si no encontramos el hotel no hemos encontrado el hotel
+        if(actividad.isPresent()) {
+            Optional<Imagen> optionalActividadImagen = actividad.get().getImagenes().stream().findFirst();
+            if(optionalActividadImagen.isPresent()) {
+                String actividadImagen = optionalActividadImagen.get().getUrl();
+                modelo.addAttribute("imagenActividad", actividadImagen);
+            }
+            modelo.addAttribute("recomendados", servicioActividad.obtenerActividadesEnTuZona(actividad.get()));
+            modelo.addAttribute("actividad",actividad.get());
+            modelo.addAttribute("preciosActuales",
+                    servicioActividad.getPrecioActual(actividad.get(), LocalDateTime.now()));
+
+            return "detallesActividad";
+        } else {
+            // Hotel no encontrado - htlm
+            return "hotelNoEncontrado";
+        }
+
+    }
+
     @GetMapping("/filtrar-actividades")
     public String filtrarActividades(Model modelo, BusquedaCriteriaActividades criteria) {
 
@@ -66,7 +92,7 @@ public class ActividadController {
                         .buscarActividades(actividadesMapper.filtrar(criteria), criteria.getPage(), criteria.getSize());
                 modelo.addAttribute("page",actividades);
                 modelo.addAttribute("lista", actividades.getContent());
-                // Obtener los precios actuales de las habitaciones del hotel
+                // Obtener los precios actuales de las habitaciones del actividad
                 LocalDateTime fechaActual = LocalDateTime.now();
                 Map<Integer, Double> preciosActuales = new HashMap<>();
 

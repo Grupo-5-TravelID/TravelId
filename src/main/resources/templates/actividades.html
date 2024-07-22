@@ -117,22 +117,25 @@
                     <div class="row d-flex actividades actividadesGastronomia">
 
                         <div class="col-lg-4 col-sm-6 d-flex" th:each="actividad : ${lista}">
+                            <a th:href="@{'/actividad/' + ${actividad.id}}" class="w-100 w-auto-sm">
                             <div class="single-package-item">
                                 <img
                                         src="/images/Hoteles/Radisson_Blu_Hotel_Berlin.jpg"
                                         alt="Radisson Blu Hotel"
                                 />
                                 <div class="single-package-item-txt">
-                                    <h3 class="d-block d-sm-none d-xl-block" th:text="${actividad.nombre}">
-                                        Nombre Actividad<span class="pull-right"
-                                                              th:text="${actividad.precio}">Precio</span>
+                                    <h3 class="d-block d-sm-none d-xl-block">
+                                        <span th:text="${actividad.nombre}">Nombre Actividad</span>
+                                        <span class="pull-right"
+                                              th:text="${preciosActuales[actividad.id] != null ? preciosActuales[actividad.id] + ' €' : ''}">
+                                            Precio
+                                        </span>
                                     </h3>
+
                                     <div class="d-none d-sm-block d-xl-none">
                                         <h3 th:text="${actividad.nombre}">Nombre Actividad</h3>
-                                        <h4
-                                                class="text-dark"
-                                                th:text="${preciosActuales[actividad.id] != null ? preciosActuales[actividad.id] + ' €' : 'No disponible'}"
-                                        >
+                                        <h4 class="text-dark"
+                                            th:text="${preciosActuales[actividad.id] != null ? preciosActuales[actividad.id] + ' €' : 'No disponible'}">
                                             Precio
                                         </h4>
                                     </div>
@@ -163,6 +166,7 @@
                                 </div>
                                 <!--/.single-package-item-txt-->
                             </div>
+                            </a>
                             <!--/.single-package-item-->
                         </div>
                         <!--/.col-->
