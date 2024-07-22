@@ -118,7 +118,7 @@
 
                   <!-- Listing Image -->
                   <div class="hotel_image" th:object="${hotel}">
-                    <img th:src="@{${imagenHotel}}" alt="Imagen del hotel" />
+                    <img th:src="@{'/imagenes/' + ${imagenHotel}}" alt="Imagen del hotel" />
                     <div
                       class="hotel_review_container d-flex flex-column align-items-center justify-content-center"
                     >
@@ -140,10 +140,10 @@
                         <div class="owl-item" th:each="imagen : ${hotel.imagenesHotel}">
                           <a
                             class="colorbox cboxElement"
-                            th:href="@{${imagen.url}}"
+                            th:href="@{'/imagenes/' + ${imagen.url}}"
                           >
                             <img
-                              th:src="${imagen.url}"
+                              th:src="'/imagenes/' + ${imagen.url}"
                               alt="https://unsplash.com/@jbriscoe"
                             />
                           </a>
@@ -245,7 +245,7 @@
                       <div class="col-lg-2">
                         <div class="room_image">
                           <img
-                                  th:src="@{${hotel.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : ${hotel.imagenesHotel.stream().findFirst().get().url}}"
+                                  th:src="@{${habitacion.imagenesHabitacion.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : '/imagenes/' + ${habitacion.imagenesHabitacion.stream().findFirst().get().url}}"
                                   alt="https://unsplash.com/@grovemade"
                           />
                         </div>
@@ -285,7 +285,7 @@
                       <div class="col-lg-2">
                         <div class="room_image">
                           <img
-                            th:src="@{${hotelRecomendado.imagenesHotel.stream().findFirst().get().url}}"
+                                  th:src="@{${hotelRecomendado.imagenesHotel.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : '/imagenes/' + ${hotelRecomendado.imagenesHotel.stream().findFirst().get().url}}"
                             alt="https://unsplash.com/@grovemade"
                           />
                         </div>

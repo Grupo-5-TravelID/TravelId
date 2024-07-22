@@ -33,11 +33,11 @@ public class Hotel {
     @Column(name = "contacto", length = 45)
     private String contacto;
 
-    @OneToMany(mappedBy = "hotel")
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Habitacion> habitaciones = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fkHotelesLocal"), nullable = false)
+    @JoinColumn(name = "idLocalizacion", foreignKey = @ForeignKey(name = "fkHotelesLocal"))
     private Localizacion localizacion;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -98,8 +98,12 @@
                                     <span th:text="${habitacion.numeroCamas}"></span>
                                     <i class="fa fa-bed" aria-hidden="true"></i>
                                     <div class="hotel_location"
-                                         th:text="${precioActual} + ' €'">
+                                         th:if="${precioActual != null}" th:text="${precioActual} + ' €'">
                                         Precio Habitación
+                                    </div>
+                                    <div class="hotel_location"
+                                         th:if="${precioActual == null}">
+                                        Precio No Disponible
                                     </div>
                                 </div>
                                 <div class="hotel_title_button ml-lg-auto text-lg-right">
@@ -116,7 +120,7 @@
 
                             <!-- Listing Image -->
                             <div class="hotel_image" th:object="${habitacion}">
-<!--                                <img th:src="@{${imagenHabitacion}}" alt="Imagen del hotel" />-->
+                                <img th:src="@{'/imagenes/' + ${imagenHabitacion}}" alt="Imagen de la habitación" />
                                 <div
                                         class="hotel_review_container d-flex flex-column align-items-center justify-content-center"
                                 >
