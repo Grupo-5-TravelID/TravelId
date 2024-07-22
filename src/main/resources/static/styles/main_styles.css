@@ -292,9 +292,7 @@ section {
   background: rgba(12, 58, 95, 0.7);
   z-index: 12;
 }
-.header.scrolled {
-  background: rgba(12, 58, 95, 0.9);
-}
+
 
 .phone {
   display: inline-block;

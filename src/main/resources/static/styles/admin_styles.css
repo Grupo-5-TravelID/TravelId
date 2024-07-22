@@ -57,6 +57,7 @@ body {
   font-weight: 400;
   background: #ffffff;
   color: #a5a5a5;
+  min-height: 100vh;
 }
 div {
   display: block;
@@ -291,9 +292,7 @@ section {
   background: rgba(0, 0, 0, 0.7);
   z-index: 12;
 }
-.header.scrolled {
-  background: rgba(12, 58, 95, 0.9);
-}
+
 
 .main_nav_col {
   height: 143px;

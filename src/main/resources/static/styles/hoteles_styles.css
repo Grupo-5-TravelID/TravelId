@@ -291,9 +291,7 @@ section {
   background: rgba(12, 58, 95, 0.7);
   z-index: 12;
 }
-.header.scrolled {
-  background: rgba(12, 58, 95, 0.9);
-}
+
 
 .main_nav_col {
   height: 143px;
