@@ -11,15 +11,15 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HabitacionReservadaId implements Serializable{
+@Embeddable
+public class AsientoReservadoId implements Serializable {
 
-    @Column(name = "idHabitacion")
-    private Integer idHabitacion;
+    @Column(name = "idAsiento")
+    private Integer idAsiento;
 
     @Column(name = "idReserva")
     private Integer idReserva;
@@ -28,15 +28,12 @@ public class HabitacionReservadaId implements Serializable{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HabitacionReservadaId that = (HabitacionReservadaId) o;
-        return Objects.equals(idHabitacion, that.idHabitacion) && Objects.equals(idReserva, that.idReserva);
+        AsientoReservadoId that = (AsientoReservadoId) o;
+        return Objects.equals(idAsiento, that.idAsiento) && Objects.equals(idReserva, that.idReserva);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idHabitacion, idReserva);
+        return Objects.hash(idAsiento, idReserva);
     }
 }
-
-
-

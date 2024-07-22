@@ -26,8 +26,8 @@ public class Asiento {
     @JoinColumn(name = "idCategoria", foreignKey = @ForeignKey(name = "fkAsiCat"), nullable = false)
     private CategoriaAsiento categoria;
 
-    @ManyToMany(mappedBy = "asientos")
-    private Set<Reserva> reservas = new HashSet<>();
+    @OneToMany(mappedBy = "asiento")
+    private Set<AsientoReservado> asientosReservados = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "idVuelo", foreignKey = @ForeignKey(name = "fkAsiVuelos"), nullable = false)

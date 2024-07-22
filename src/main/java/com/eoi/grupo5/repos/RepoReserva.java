@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface RepoReserva extends JpaRepository<Reserva, Integer> {
 
-    List<Reserva> findByUserid(Integer idUsuario);
 }
