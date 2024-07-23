@@ -78,7 +78,7 @@
                         <form th:action="@{'/admin/actividades/' + ${actividad.id}}" th:method="get">
                             <button type="submit" class="btn btn-outline-info">Actualizar</button>
                         </form>
-                        <form th:action="@{'/admin/hoteles/eliminar/' + ${actividad.id}}" th:method="delete">
+                        <form th:action="@{'/admin/actividades/eliminar/' + ${actividad.id}}" th:method="delete">
                             <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                         </form>
                     </td>
