@@ -80,6 +80,10 @@ public class ActividadController {
     @GetMapping("/filtrar-actividades")
     public String filtrarActividades(Model modelo, BusquedaCriteriaActividades criteria) {
 
+        if(criteria.getSize() == null || criteria.getSize() <= 0) {
+            criteria.setSize(6);
+        }
+
         if(criteria.getFechaInicio() != null && criteria.getFechaFin() == null || criteria.getFechaInicio() == null && criteria.getFechaFin() !=null) {
             modelo.addAttribute("error", "Debe seleccionar ambas fechas: Fecha de inicio y Fecha de fin.");
         } else {

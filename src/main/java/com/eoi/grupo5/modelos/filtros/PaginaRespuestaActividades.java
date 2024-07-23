@@ -6,10 +6,10 @@ import java.util.List;
 public class PaginaRespuestaActividades<T> implements PaginaRespuesta<T>{
 
     private List<T> content = new ArrayList<>();
-    private int size;
+    private Integer size;
     private long totalSize;
-    private int page;
-    private int totalPages;
+    private Integer page;
+    private Integer totalPages;
 
 
     @Override
@@ -23,12 +23,12 @@ public class PaginaRespuestaActividades<T> implements PaginaRespuesta<T>{
     }
 
     @Override
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
     @Override
-    public void setSize(int size) {
+    public void setSize(Integer size) {
         this.size = size;
     }
 
@@ -43,22 +43,22 @@ public class PaginaRespuestaActividades<T> implements PaginaRespuesta<T>{
     }
 
     @Override
-    public int getPage() {
+    public Integer getPage() {
         return page;
     }
 
     @Override
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
     @Override
-    public int getTotalPages() {
+    public Integer getTotalPages() {
         return totalPages;
     }
 
     @Override
-    public void setTotalPages(int totalPages) {
+    public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
     }
 
