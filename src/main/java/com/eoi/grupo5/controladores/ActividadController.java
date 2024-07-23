@@ -95,7 +95,7 @@ public class ActividadController {
                 modelo.addAttribute("fechaInicio", criteria.getFechaInicio());
                 modelo.addAttribute("fechaFin", criteria.getFechaFin());
                 modelo.addAttribute("preciosActuales", servicioActividad
-                        .obtenerPreciosActualesActividades(servicioActividad.buscarEntidades()));
+                        .obtenerPreciosActualesActividades(actividades));
                 modelo.addAttribute("tiposActividad", servicioTipoActividad.buscarEntidades());
                 return "actividades";
             } else {
@@ -108,17 +108,7 @@ public class ActividadController {
                 modelo.addAttribute("page",actividades);
                 modelo.addAttribute("lista", actividades.getContent());
                 // Obtener los precios actuales de las habitaciones del actividad
-                LocalDateTime fechaActual = LocalDateTime.now();
-                Map<Integer, Double> preciosActuales = new HashMap<>();
-
-                 actividades.forEach(actividad -> {
-                    Precio precioActual = actividad.obtenerPrecioActual(actividad, fechaActual);
-                    if (precioActual != null) {
-                        preciosActuales.put(actividad.getId(), precioActual.getPrecio());
-                    } else {
-                        preciosActuales.put(actividad.getId(), null);
-                    }
-                });
+               Map<Integer, Double> preciosActuales = servicioActividad.obtenerPreciosActualesActividades(actividades);
 
                 modelo.addAttribute("preciosActuales", preciosActuales);
             }

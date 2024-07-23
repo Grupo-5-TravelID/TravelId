@@ -3,6 +3,7 @@ package com.eoi.grupo5.servicios;
 import com.eoi.grupo5.modelos.Actividad;
 
 import com.eoi.grupo5.modelos.Precio;
+import com.eoi.grupo5.modelos.filtros.ActividadDto;
 import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
 import com.eoi.grupo5.repos.RepoActividad;
 import org.springframework.data.domain.Page;
@@ -71,5 +72,31 @@ public class ServicioActividad extends AbstractBusinessServiceSoloEnt<Actividad,
 
         return preciosActuales;
     }
+
+    public Precio getPrecioActual(ActividadDto actividad, LocalDateTime fechaActual) {
+        return actividad.getPrecio().stream()
+                .filter(precio -> !fechaActual.isBefore(precio.getFechaInicio()) && (precio.getFechaFin() == null || !fechaActual.isAfter(precio.getFechaFin())))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Map<Integer, Double> obtenerPreciosActualesActividades(PaginaRespuestaActividades<ActividadDto> actividades) {
+        // Obtener los precios actuales de las actividades del hotel
+        LocalDateTime fechaActual = LocalDateTime.now();
+        Map<Integer, Double> preciosActuales = new HashMap<>();
+
+        actividades.forEach(actividad -> {
+            Precio precioActual = getPrecioActual(actividad, fechaActual);
+            if (precioActual != null) {
+                preciosActuales.put(actividad.getId(), precioActual.getPrecio());
+            } else {
+                preciosActuales.put(actividad.getId(), null);
+            }
+        });
+
+        return preciosActuales;
+    }
+
+
 
 }
