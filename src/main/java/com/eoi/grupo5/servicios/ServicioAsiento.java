@@ -30,7 +30,7 @@ public class ServicioAsiento extends AbstractBusinessServiceSoloEnt<Asiento, Int
         vuelo.getAsientos().forEach(asiento -> {
             Precio precioActual = getPrecioActual(asiento, fechaActual);
             if (precioActual != null) {
-                preciosActuales.put(asiento.getId(), precioActual.getPrecio());
+                preciosActuales.put(asiento.getId(), precioActual.getValor());
             } else {
                 preciosActuales.put(asiento.getId(), null);
             }

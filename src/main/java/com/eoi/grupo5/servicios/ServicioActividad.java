@@ -64,7 +64,7 @@ public class ServicioActividad extends AbstractBusinessServiceSoloEnt<Actividad,
         actividades.forEach(actividad -> {
             Precio precioActual = getPrecioActual(actividad, fechaActual);
             if (precioActual != null) {
-                preciosActuales.put(actividad.getId(), precioActual.getPrecio());
+                preciosActuales.put(actividad.getId(), precioActual.getValor());
             } else {
                 preciosActuales.put(actividad.getId(), null);
             }
@@ -88,7 +88,7 @@ public class ServicioActividad extends AbstractBusinessServiceSoloEnt<Actividad,
         actividades.forEach(actividad -> {
             Precio precioActual = getPrecioActual(actividad, fechaActual);
             if (precioActual != null) {
-                preciosActuales.put(actividad.getId(), precioActual.getPrecio());
+                preciosActuales.put(actividad.getId(), precioActual.getValor());
             } else {
                 preciosActuales.put(actividad.getId(), null);
             }

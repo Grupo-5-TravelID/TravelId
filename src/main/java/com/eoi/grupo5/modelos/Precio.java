@@ -17,7 +17,7 @@ public class Precio {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private Double precio;
+    private Double valor;
 
     @ManyToOne
     @JoinColumn(name = "idHabitacion")

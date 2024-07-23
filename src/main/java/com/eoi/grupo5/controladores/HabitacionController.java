@@ -30,7 +30,7 @@ public class HabitacionController {
 
             if(!habitacion.get().getPrecio().isEmpty()) {
             Precio precioActual = servicio.getPrecioActual(habitacion.get(), LocalDateTime.now());
-            modelo.addAttribute("precioActual", precioActual.getPrecio());
+            modelo.addAttribute("precioActual", precioActual.getValor());
             }
 
             if(!habitacion.get().getImagenesHabitacion().isEmpty()) {
