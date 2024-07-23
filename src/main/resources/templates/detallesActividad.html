@@ -97,6 +97,8 @@
                            + ${actividad.getLocalizacion().getPais().getNombre()}">
                         Localización del Actividad
                       </div>
+                      <div th:if="${precioActual != null}" th:text="${precioActual.valor} + ' €'">Precio</div>
+                      <div th:if="${precioActual == null}">Precio no disponible</div>
                     </div>
                     <div class="actividad_title_button ml-lg-auto text-lg-right">
                       <div class="button book_button trans_200">

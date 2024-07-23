@@ -8,6 +8,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -20,13 +21,8 @@ public class ActividadDto {
     private LocalDateTime fechaFin;
     private TipoActividad tipo;
     private Localizacion localizacion;
-    private List<Precio> precio;
+    private Set<Precio> precio;
 
-    public Precio obtenerPrecioActual(ActividadDto actividad, LocalDateTime fechaActual) {
-        return actividad.getPrecio().stream()
-                .filter(precio -> !fechaActual.isBefore(precio.getFechaInicio()) && (precio.getFechaFin() == null || !fechaActual.isAfter(precio.getFechaFin())))
-                .findFirst()
-                .orElse(null);
-    }
+
 
 }

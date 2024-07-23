@@ -50,7 +50,7 @@ public class Actividad {
     private Set<Imagen> imagenes = new HashSet<>();
 
     @OneToMany(mappedBy = "actividad")
-    private List<Precio> precio;
+    private Set<Precio> precio = new HashSet<>();
 
 
 }

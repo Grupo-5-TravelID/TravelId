@@ -62,7 +62,7 @@ public class ActividadController {
             }
             modelo.addAttribute("recomendados", servicioActividad.obtenerActividadesEnTuZona(actividad.get()));
             modelo.addAttribute("actividad",actividad.get());
-            modelo.addAttribute("preciosActuales",
+            modelo.addAttribute("precioActual",
                     servicioActividad.getPrecioActual(actividad.get(), LocalDateTime.now()));
 
             return "detallesActividad";
