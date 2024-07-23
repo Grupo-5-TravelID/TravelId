@@ -178,11 +178,11 @@
 
             <!-- Paginación -->
             <div class="d-flex justify-content-center">
-                <ul class="pagination d-flex gap-3" th:if="${page != null}">
+                <ul class="pagination d-flex gap-3" th:if="${page != null && !page.getContent().isEmpty()}">
                     <!-- Página anterior -->
                     <li th:if="${page.hasPrevious()}" class="page-item">
                         <a class="page-link"
-                           th:href="@{/filtrar-actividades(page=${page.page - 1}, size=${page.size}, tipoId=${tipoId})}"
+                           th:href="@{/filtrar-actividades(page=${page.page - 1}, size=${page.size}, tipoId=${tipoId}, fechaInicio=${fechaInicio}, fechaFin=${fechaFin})}"
                            aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
@@ -192,14 +192,14 @@
                     <li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
                         th:classappend="${i == page.page} ? 'page-item active' : 'page-item'">
                         <a class="page-link"
-                           th:href="@{/filtrar-actividades(page=${i}, size=${page.size}, tipoId=${tipoId})}"
+                           th:href="@{/filtrar-actividades(page=${i}, size=${page.size}, tipoId=${tipoId}, fechaInicio=${fechaInicio}, fechaFin=${fechaFin})}"
                            th:text="${i + 1}"></a>
                     </li>
 
                     <!-- Página siguiente -->
                     <li th:if="${page.hasNext()}" class="page-item">
                         <a class="page-link"
-                           th:href="@{/filtrar-actividades(page=${page.page + 1}, size=${page.size}, tipoId=${tipoId})}"
+                           th:href="@{/filtrar-actividades(page=${page.page + 1}, size=${page.size}, tipoId=${tipoId}, fechaInicio=${fechaInicio}, fechaFin=${fechaFin})}"
                            aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>

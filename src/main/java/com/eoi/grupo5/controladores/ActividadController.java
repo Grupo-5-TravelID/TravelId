@@ -81,6 +81,8 @@ public class ActividadController {
                 actividades = servicioFiltroActividades.buscarActividades(actividadesMapper.filtrar(criteria), criteria.getPage(), criteria.getSize());
                 modelo.addAttribute("page", actividades);
                 modelo.addAttribute("lista", actividades.getContent());
+                modelo.addAttribute("fechaInicio", criteria.getFechaInicio());
+                modelo.addAttribute("fechaFin", criteria.getFechaFin());
                 modelo.addAttribute("preciosActuales", servicioActividad
                         .obtenerPreciosActualesActividades(servicioActividad.buscarEntidades()));
                 modelo.addAttribute("tiposActividad", servicioTipoActividad.buscarEntidades());
@@ -88,6 +90,8 @@ public class ActividadController {
             } else {
 
                 modelo.addAttribute("tipoId", criteria.getTipoId());
+                modelo.addAttribute("fechaInicio", criteria.getFechaInicio());
+                modelo.addAttribute("fechaFin", criteria.getFechaFin());
                 PaginaRespuestaActividades<ActividadDto> actividades = servicioFiltroActividades
                         .buscarActividades(actividadesMapper.filtrar(criteria), criteria.getPage(), criteria.getSize());
                 modelo.addAttribute("page",actividades);
