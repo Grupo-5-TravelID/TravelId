@@ -1,4 +1,4 @@
-package com.eoi.grupo5.modelos.filtros;
+package com.eoi.grupo5.paginacion;
 
 import java.util.Iterator;
 import java.util.List;

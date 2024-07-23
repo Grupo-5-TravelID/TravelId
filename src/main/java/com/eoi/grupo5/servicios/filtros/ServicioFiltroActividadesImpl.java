@@ -2,8 +2,8 @@ package com.eoi.grupo5.servicios.filtros;
 
 import com.eoi.grupo5.mapper.ActividadesMapper;
 import com.eoi.grupo5.modelos.Actividad;
-import com.eoi.grupo5.modelos.filtros.ActividadDto;
-import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
+import com.eoi.grupo5.dtos.ActividadDto;
+import com.eoi.grupo5.paginacion.PaginaRespuestaActividades;
 import com.eoi.grupo5.repos.RepoActividad;
 import com.eoi.grupo5.repos.filtros.FiltroActividades;
 import com.eoi.grupo5.repos.specification.ActividadSpec;

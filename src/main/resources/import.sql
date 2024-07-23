@@ -101,28 +101,28 @@ INSERT INTO actividades (nombre, descripcion, fecha_inicio, fecha_fin, id_tipo, 
 
 
 --  Precios Habitaciones Hotel 1
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 1);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 1);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 1);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 1);
 
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 2);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 2);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 2);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 2);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 2);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 2);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 2);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 2);
 
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 3);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 3);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 3);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 3);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 3);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 3);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 3);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 3);
 
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 4);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 4);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 4);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 4);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 4);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 4);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 4);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_habitacion) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 4);
 
 -- Precios Actividades Acuáticas
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_actividad) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 1);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_actividad) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 1);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_actividad) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 1);
-INSERT INTO precio (precio, fecha_inicio, fecha_fin, id_actividad) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_actividad) VALUES (100.00, '2024-01-01T00:00:00', '2024-03-31T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_actividad) VALUES (120.00, '2024-04-01T00:00:00', '2024-06-30T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_actividad) VALUES (110.00, '2024-07-01T00:00:00', '2024-09-30T23:59:59', 1);
+INSERT INTO precio (valor, fecha_inicio, fecha_fin, id_actividad) VALUES (130.00, '2024-10-01T00:00:00', '2024-12-31T23:59:59', 1);

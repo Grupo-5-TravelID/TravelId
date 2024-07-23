@@ -3,15 +3,14 @@ package com.eoi.grupo5.mapper;
 
 import com.eoi.grupo5.controladores.criteria.BusquedaCriteriaActividades;
 import com.eoi.grupo5.modelos.Actividad;
-import com.eoi.grupo5.modelos.filtros.ActividadDto;
-import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
+import com.eoi.grupo5.dtos.ActividadDto;
+import com.eoi.grupo5.paginacion.PaginaRespuestaActividades;
 import com.eoi.grupo5.repos.filtros.FiltroActividades;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;
 
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.mapstruct.InjectionStrategy.CONSTRUCTOR;
