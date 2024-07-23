@@ -51,7 +51,7 @@ public class ActividadController {
     }
 
     @GetMapping("/actividad/{id}")
-    public String detallesHotel(Model modelo, @PathVariable Integer id) {
+    public String detallesActividad(Model modelo, @PathVariable Integer id) {
         Optional<Actividad> actividad = servicioActividad.encuentraPorId(id);
         // Si no encontramos el hotel no hemos encontrado el hotel
         if(actividad.isPresent()) {
