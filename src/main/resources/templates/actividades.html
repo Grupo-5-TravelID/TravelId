@@ -82,8 +82,10 @@
             <input type="hidden" name="page" value="0">
 
             <div class="filter-group">
-                <label for="size">Tamaño Página:</label>
-                <input type="number" name="size" id="size" min="1" th:value="${page.size}"/>
+                <label for="size" th:if="${page != null}">Tamaño Página:</label>
+                <input type="number" name="size" id="size" min="1" th:value="${page.size}" th:if="${page != null}"/>
+                <label for="sizeNull" th:if="${page == null}">Tamaño Página:</label>
+                <input type="number" name="size" min="1"  id="sizeNull" th:if="${page == null}"/>
             </div>
 
             <div class="filter-group">
