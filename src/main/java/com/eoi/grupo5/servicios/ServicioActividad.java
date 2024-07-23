@@ -1,14 +1,17 @@
 package com.eoi.grupo5.servicios;
 
 import com.eoi.grupo5.modelos.Actividad;
-import com.eoi.grupo5.modelos.Habitacion;
-import com.eoi.grupo5.modelos.Hotel;
+
 import com.eoi.grupo5.modelos.Precio;
+import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
 import com.eoi.grupo5.repos.RepoActividad;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +23,20 @@ public class ServicioActividad extends AbstractBusinessServiceSoloEnt<Actividad,
 
     protected ServicioActividad(RepoActividad repoActividad) {
         super(repoActividad);
+    }
+
+    public PaginaRespuestaActividades<Actividad> buscarEntidadesPaginadas(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Actividad> actividadPage = getRepo().findAll((Specification<Actividad>) null, pageable);
+
+        PaginaRespuestaActividades<Actividad> respuesta = new PaginaRespuestaActividades<>();
+        respuesta.setContent(actividadPage.getContent());
+        respuesta.setSize(actividadPage.getSize());
+        respuesta.setTotalSize(actividadPage.getTotalElements());
+        respuesta.setPage(actividadPage.getNumber());
+        respuesta.setTotalPages(actividadPage.getTotalPages());
+
+        return respuesta;
     }
 
     public List<Actividad> obtenerActividadesEnTuZona(Actividad actividad) {

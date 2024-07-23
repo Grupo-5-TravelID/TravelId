@@ -12,6 +12,7 @@ import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
 import com.eoi.grupo5.servicios.ServicioActividad;
 import com.eoi.grupo5.servicios.ServicioTipoActividad;
 import com.eoi.grupo5.servicios.filtros.ServicioFiltroActividades;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,10 +41,16 @@ public class ActividadController {
 
     @GetMapping("/actividades/lista")
     public String listaActividades(Model modelo) {
-        List<Actividad> actividades = servicioActividad.buscarEntidades();
+
+        int page = 0;
+        int size = 6;
+
+        PaginaRespuestaActividades<Actividad> actividadesPage = servicioActividad.buscarEntidadesPaginadas(page, size);
+        List<Actividad> actividades = actividadesPage.getContent();
         modelo.addAttribute("lista", actividades);
         modelo.addAttribute("preciosActuales", servicioActividad.obtenerPreciosActualesActividades(actividades));
         modelo.addAttribute("tiposActividad", servicioTipoActividad.buscarEntidades());
+        modelo.addAttribute("page", actividadesPage);
         return "actividades";
     }
 
