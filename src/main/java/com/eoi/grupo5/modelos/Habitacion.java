@@ -1,6 +1,8 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,20 +25,28 @@ public class Habitacion {
     private Integer id;
 
     @Column(name="numero", nullable = false)
+    @NotNull(message = "La habitación debe tener un número")
+    @Min(value = 1, message = "El número de habitación debe ser un valor positivo")
     private Integer numero;
 
     @Column(name="capacidad")
+    @NotNull(message = "La capacidad no puede ser nula")
+    @Min(value = 1, message = "La capacidad debe ser al menos 1")
     private Byte capacidad;
 
     @Column(name = "numeroCamas")
+    @NotNull(message = "El número de camas no puede ser nulo")
+    @Min(value = 1, message = "El número de camas debe ser al menos 1")
     private Byte numeroCamas;
 
     @ManyToOne
     @JoinColumn(name = "idTipo", foreignKey = @ForeignKey(name = "fkHabitacionesTipo"), nullable = false)
+    @NotNull(message = "La habitación debe tener un tipo asociado")
     private TipoHabitacion tipo;
 
     @ManyToOne
     @JoinColumn(name = "idHotel", foreignKey = @ForeignKey(name = "fkHabitacionesHoteles"), nullable = false)
+    @NotNull(message = "La habitación debe tener un Hotel asociado")
     private Hotel hotel;
 
     @OneToMany(mappedBy = "habitacion")

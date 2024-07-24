@@ -1,6 +1,8 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +24,13 @@ public class Localizacion {
     private Integer id;
 
     @Column(name = "nombre", length = 45)
+    @NotNull(message = "La localización debe tener un nombre")
+    @Size(max = 45, message = "El nombre no puede tener más de 45 caracteres")
     private String nombre;
 
     @Column(name = "codigo", length = 10)
+    @NotNull(message = "La localización debe tener un código")
+    @Size(max = 10, message = "El código no puede tener más de 10 caracteres")
     private String codigo;
 
     @OneToMany(mappedBy = "destino")
@@ -35,6 +41,7 @@ public class Localizacion {
 
     @ManyToOne
     @JoinColumn(name = "idPais", foreignKey = @ForeignKey(name = "fkLocalPaises"), nullable = false)
+    @NotNull(message = "La localización debe tener un país asociado")
     private Pais pais;
 
     @OneToMany(mappedBy = "localizacion")
