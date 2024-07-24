@@ -4,13 +4,10 @@ import com.eoi.grupo5.modelos.Habitacion;
 import com.eoi.grupo5.modelos.Hotel;
 import com.eoi.grupo5.modelos.Precio;
 import com.eoi.grupo5.repos.RepoHabitacion;
-import com.eoi.grupo5.repos.RepoPrecio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -36,7 +33,7 @@ public class ServicioHabitacion extends AbstractBusinessServiceSoloEnt<Habitacio
         hotel.getHabitaciones().forEach(habitacion -> {
             Precio precioActual = getPrecioActual(habitacion, fechaActual);
             if (precioActual != null) {
-                preciosActuales.put(habitacion.getId(), precioActual.getPrecio());
+                preciosActuales.put(habitacion.getId(), precioActual.getValor());
             } else {
                 preciosActuales.put(habitacion.getId(), null);
             }
@@ -52,7 +49,7 @@ public class ServicioHabitacion extends AbstractBusinessServiceSoloEnt<Habitacio
         while (!fechaActual.isAfter(fechaFin)) {
             Precio precioVigente = getPrecioActual(habitacion, fechaActual);
             if (precioVigente != null) {
-                precioTotal += precioVigente.getPrecio();
+                precioTotal += precioVigente.getValor();
             }
             // Avanzar al siguiente día
             fechaActual = fechaActual.plusDays(1);

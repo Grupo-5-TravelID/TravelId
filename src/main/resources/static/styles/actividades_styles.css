@@ -1204,3 +1204,20 @@ h3 span {
 .footer_nav_item a:hover {
   color: #ffffff;
 }
+
+/* Paginación */
+
+.pagination {
+  margin: 20px 0;
+}
+
+.pagination .active a {
+  background-color: #007bff; /* Color del fondo para la página activa */
+  border-color: #007bff; /* Color del borde para la página activa */
+  color: white; /* Color del texto para la página activa */
+}
+
+.pagination a {
+  border-radius: .25rem; /* Redondeo de bordes */
+  padding: 8px
+}

@@ -1,10 +1,12 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -23,10 +25,14 @@ public class Reserva {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fechaInicio")
+    @NotNull(message = "Debes introducir una fecha de inicio de reserva")
     private LocalDateTime fechaInicio;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fechaFin")
+    @NotNull(message = "Debes introducir una fecha de fin de reserva")
     private LocalDateTime fechaFin;
 
     @Basic(optional = false)
@@ -34,6 +40,7 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", foreignKey = @ForeignKey(name = "fkReservasUsuarios"), nullable = false)
+    @NotNull(message = "Debe haber un usuario asociado a la reserva")
     private Usuario usu;
 
 

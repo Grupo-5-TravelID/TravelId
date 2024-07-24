@@ -1,10 +1,14 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -23,10 +27,14 @@ public class Vuelo {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fechaSalida")
+    @NotNull(message = "La fecha de salida no puede ser nula")
     private LocalDateTime fechaSalida;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fechaLlegada")
+    @NotNull(message = "La fecha de llegada no puede ser nula")
     private LocalDateTime fechaLlegada;
 
     @ManyToOne
@@ -48,10 +56,12 @@ public class Vuelo {
     @JoinColumn(name = "idImagen")
     private Imagen imagen;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", length = 100, nullable = false)
+    @NotNull(message = "El nombre del vuelo no puede ser nulo")
     private String nombre;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", length = 250)
+    @Size(max = 250, message = "La descripción no puede tener más de 250 caracteres")
     private String descripcion;
 
 }

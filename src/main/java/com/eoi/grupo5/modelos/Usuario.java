@@ -1,6 +1,9 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,9 +26,13 @@ public class Usuario implements UserDetails, Serializable {
     private Integer id;
 
     @Column(name = "nombreUsuario", nullable = false, length = 45)
+    @NotNull(message = "Debes introducir un nombre de usuario")
+    @Size(min = 2, max = 45, message = "El nombre de usuario debe tener entre 2 y 45 caracteres")
     private String nombreUsuario;
 
     @Column(name = "password", nullable = false, length = 150)
+    @NotNull(message = "La contraseña no puede ser nula")
+    @Size(min = 5, max = 150, message = "La contraseña debe tener entre 5 y 150 caracteres")
     private String password;
 
     @OneToOne(mappedBy = "usu",cascade = CascadeType.ALL)

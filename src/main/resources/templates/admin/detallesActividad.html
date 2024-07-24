@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Detalles Hotel</title>
+    <title>Detalles Actividad</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Travelix Project" />
@@ -60,38 +60,41 @@
       <div th:replace="~{admin/fragments/fragments :: adminNavMobile}"></div>
 
       <div class="container main">
-        <form class="d-flex gap-3 flex-column" action="/admin/hoteles/crear" method="post" enctype="multipart/form-data" th:object="${hotel}">
-          <input type="hidden" name="id" id="id" th:value="${hotel.id}" th:field="*{id}">
+        <form class="d-flex gap-3 flex-column" action="/admin/actividades/crear" method="post" enctype="multipart/form-data" th:object="${actividad}">
+          <input type="hidden" name="id" id="id" th:value="${actividad.id}" th:field="*{id}">
 
           <div class="form-group">
-            <label for="nombre">Nombre del Hotel</label>
-            <input type="text" class="form-control" id="nombre" th:value="${hotel.nombre}" th:field="*{nombre}">
-          </div>
-
-          <div class="form-group">
-            <label for="categoria">Categoría</label>
-            <input type="number" class="form-control" id="categoria" th:value="${hotel.categoria}" th:field="*{categoria}">
+            <label for="nombre">Nombre de la Actividad</label>
+            <input type="text" class="form-control" id="nombre"  th:field="*{nombre}">
           </div>
 
           <div class="form-group">
             <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" th:value="${hotel.descripcion}" th:field="*{descripcion}">
+            <input type="text" class="form-control" id="descripcion"  th:field="*{descripcion}">
           </div>
 
           <div class="form-group">
-            <label for="contacto">Contacto</label>
-            <input type="text" class="form-control" id="contacto" th:value="${hotel.contacto}" th:field="*{contacto}">
+            <label for="fechaInicio">Fecha Inicio</label>
+            <input type="datetime-local" class="form-control" name="fechaInicio" id="fechaInicio" th:field="*{fechaInicio}">
           </div>
 
           <div class="form-group">
-            <label for="localizacion">Hotel:</label>
+            <label for="fechaFin">Fecha Fin</label>
+            <input type="datetime-local" class="form-control" name="fechaFin" id="fechaFin" th:field="*{fechaFin}">
+          </div>
+
+          <div class="form-group">
+            <label for="localizacion">Localización:</label>
             <select class="form-control" id="localizacion" th:field="*{localizacion.id}">
-              <option th:each="localizacion : ${localizaciones}" th:value="${localizacion.id}" th:text="${localizacion.nombre}" th:selected="${localizacion.id != null and hotel.localizacion.id == localizacion.id}"></option>
+              <option th:each="localizacion : ${localizaciones}" th:value="${localizacion.id}" th:text="${localizacion.nombre}" th:selected="${localizacion.id != null and actividad.localizacion.id == localizacion.id}"></option>
             </select>
           </div>
 
           <div class="form-group">
-            <input type="hidden" name="habitaciones" th:field="*{habitaciones}">
+            <label for="tipoActividad">Tipo:</label>
+            <select class="form-control" id="tipoActividad" th:field="*{tipo.id}">
+              <option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.nombre}" th:selected="${tipo.id != null and actividad.tipo.id == tipo.id}"></option>
+            </select>
           </div>
 
           <div class="form-group">
