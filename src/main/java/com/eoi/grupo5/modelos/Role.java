@@ -3,6 +3,8 @@ package com.eoi.grupo5.modelos;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +27,8 @@ public class Role implements Serializable {
     private Integer id;
 
     @Column(nullable = false)
+    @NotEmpty(message = "El nombre del rol no puede estar vacío")
+    @Size(max = 45, message = "El nombre del rol no puede tener más de 45 caracteres")
     private String roleName;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)

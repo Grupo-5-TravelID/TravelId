@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hoteles</title>
+    <title>Actividades</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Travelix Project" />
@@ -59,7 +59,32 @@
     <div th:replace="~{admin/fragments/fragments :: adminNavMobile}"></div>
 
     <div class="container main">
-        <h1>Bienvenido [[${username}]] !!!</h1>
+
+        <button type="button" class="btn btn-outline-info mb-3">
+            <a class="text-decoration-none text-dark" th:href="@{'/admin/actividades/crear'}">Crear Actividad</a>
+        </button>
+
+        <table class="table table-striped">
+            <thead>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr th:each="actividad : ${actividades}">
+                    <td th:text="${actividad.id}"></td>
+                    <td th:text="${actividad.nombre}"></td>
+                    <td class="d-flex gap-2">
+                        <form th:action="@{'/admin/actividades/' + ${actividad.id}}" th:method="get">
+                            <button type="submit" class="btn btn-outline-info">Actualizar</button>
+                        </form>
+                        <form th:action="@{'/admin/actividades/eliminar/' + ${actividad.id}}" th:method="delete">
+                            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script th:src="@{/js/jquery-3.2.1.min.js}"></script>

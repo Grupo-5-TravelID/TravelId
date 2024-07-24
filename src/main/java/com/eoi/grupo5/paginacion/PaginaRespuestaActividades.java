@@ -1,14 +1,15 @@
-package com.eoi.grupo5.modelos.filtros;
+package com.eoi.grupo5.paginacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaginaRespuestaActividades<T> implements PaginaRespuesta<T>{
 
-    private List<T> content;
-    private int size;
+    private List<T> content = new ArrayList<>();
+    private Integer size;
     private long totalSize;
-    private int page;
-    private int totalPages;
+    private Integer page;
+    private Integer totalPages;
 
 
     @Override
@@ -22,12 +23,12 @@ public class PaginaRespuestaActividades<T> implements PaginaRespuesta<T>{
     }
 
     @Override
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
     @Override
-    public void setSize(int size) {
+    public void setSize(Integer size) {
         this.size = size;
     }
 
@@ -42,26 +43,36 @@ public class PaginaRespuestaActividades<T> implements PaginaRespuesta<T>{
     }
 
     @Override
-    public int getPage() {
+    public Integer getPage() {
         return page;
     }
 
     @Override
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
     @Override
-    public int getTotalPages() {
+    public Integer getTotalPages() {
         return totalPages;
     }
 
     @Override
-    public void setTotalPages(int totalPages) {
+    public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
     }
 
     public void add(T element) {
         content.add(element);
+    }
+
+    // Determina si hay una página anterior
+    public boolean hasPrevious() {
+        return page > 0;
+    }
+
+    // Determina si hay una página siguiente
+    public boolean hasNext() {
+        return page < totalPages - 1;
     }
 }

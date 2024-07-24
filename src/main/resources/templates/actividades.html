@@ -63,7 +63,7 @@
                 <select id="category" name="tipoId">
                     <option value="">Todos</option>
                     <!-- Iterar sobre los tipos de actividad disponibles -->
-                    <option th:each="tipo : ${tiposActividad}" th:value="${tipo.id}" th:text="${tipo.nombre}">Tipo
+                    <option th:each="tipo : ${tiposActividad}" th:value="${tipo.id}" th:text="${tipo.nombre}" th:selected="${tipo.id == tipoId}">Tipo
                         Actividad
                     </option>
                 </select>
@@ -71,12 +71,21 @@
 
             <div class="filter-group">
                 <label for="fechaInicio">FECHA DE INICIO:</label>
-                <input type="datetime-local"  name="fechaInicio" id="fechaInicio"/>
+                <input type="datetime-local"  name="fechaInicio" id="fechaInicio" th:value="${fechaInicio}"/>
             </div>
 
             <div class="filter-group">
                 <label for="fechaFin">FECHA DE FIN:</label>
-                <input type="datetime-local" name="fechaFin" id="fechaFin"/>
+                <input type="datetime-local" name="fechaFin" id="fechaFin" th:value="${fechaFin}"/>
+            </div>
+
+            <input type="hidden" name="page" value="0">
+
+            <div class="filter-group">
+                <label for="size" th:if="${page != null}">Tamaño Página:</label>
+                <input type="number" name="size" id="size" min="1" th:value="${page.size}" th:if="${page != null}"/>
+                <label for="sizeNull" th:if="${page == null}">Tamaño Página:</label>
+                <input type="number" name="size" min="1"  id="sizeNull" th:if="${page == null}"/>
             </div>
 
             <div class="filter-group">
@@ -110,22 +119,25 @@
                     <div class="row d-flex actividades actividadesGastronomia">
 
                         <div class="col-lg-4 col-sm-6 d-flex" th:each="actividad : ${lista}">
+                            <a th:href="@{'/actividad/' + ${actividad.id}}" class="w-100 w-auto-sm">
                             <div class="single-package-item">
                                 <img
                                         src="/images/Hoteles/Radisson_Blu_Hotel_Berlin.jpg"
                                         alt="Radisson Blu Hotel"
                                 />
                                 <div class="single-package-item-txt">
-                                    <h3 class="d-block d-sm-none d-xl-block" th:text="${actividad.nombre}">
-                                        Nombre Actividad<span class="pull-right"
-                                                              th:text="${actividad.precio}">Precio</span>
+                                    <h3 class="d-block d-sm-none d-xl-block">
+                                        <span th:text="${actividad.nombre}">Nombre Actividad</span>
+                                        <span class="pull-right"
+                                              th:text="${preciosActuales[actividad.id] != null ? preciosActuales[actividad.id] + ' €' : ''}">
+                                            Precio
+                                        </span>
                                     </h3>
+
                                     <div class="d-none d-sm-block d-xl-none">
                                         <h3 th:text="${actividad.nombre}">Nombre Actividad</h3>
-                                        <h4
-                                                class="text-dark"
-                                                th:text="${preciosActuales[actividad.id] != null ? preciosActuales[actividad.id] + ' €' : 'No disponible'}"
-                                        >
+                                        <h4 class="text-dark"
+                                            th:text="${preciosActuales[actividad.id] != null ? preciosActuales[actividad.id] + ' €' : 'No disponible'}">
                                             Precio
                                         </h4>
                                     </div>
@@ -156,6 +168,7 @@
                                 </div>
                                 <!--/.single-package-item-txt-->
                             </div>
+                            </a>
                             <!--/.single-package-item-->
                         </div>
                         <!--/.col-->
@@ -164,6 +177,40 @@
                 <!--/.row-->
             </div>
             <!--/.packages-content-->
+
+            <!-- Paginación -->
+            <div class="d-flex justify-content-center">
+                <ul class="pagination d-flex gap-3" th:if="${page != null && !page.getContent().isEmpty()}">
+                    <!-- Página anterior -->
+                    <li th:if="${page.hasPrevious()}" class="page-item">
+                        <a class="page-link"
+                           th:href="@{/filtrar-actividades(page=${page.page - 1}, size=${page.size}, tipoId=${tipoId}, fechaInicio=${fechaInicio}, fechaFin=${fechaFin})}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Páginas numeradas -->
+                    <li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
+                        th:classappend="${i == page.page} ? 'page-item active' : 'page-item'">
+                        <a class="page-link"
+                           th:href="@{/filtrar-actividades(page=${i}, size=${page.size}, tipoId=${tipoId}, fechaInicio=${fechaInicio}, fechaFin=${fechaFin})}"
+                           th:text="${i + 1}"></a>
+                    </li>
+
+                    <!-- Página siguiente -->
+                    <li th:if="${page.hasNext()}" class="page-item">
+                        <a class="page-link"
+                           th:href="@{/filtrar-actividades(page=${page.page + 1}, size=${page.size}, tipoId=${tipoId}, fechaInicio=${fechaInicio}, fechaFin=${fechaFin})}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
         </div>
         <!--/.container-->
     </section>
@@ -182,5 +229,7 @@
 <script th:src="@{/plugins/easing/easing.js}"></script>
 <script th:src="@{/plugins/parallax-js-master/parallax.min.js}"></script>
 <script th:src="@{/js/offers_custom.js}"></script>
+<script th:src="@{/plugins/colorbox/jquery.colorbox-min.js}"></script>
+
 </body>
 </html>

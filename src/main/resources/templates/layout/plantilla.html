@@ -152,7 +152,7 @@
                                 <a th:href="@{/vuelos/lista}">vuelos</a>
                             </li>
                             <li class="tag_item mx-xl-4 min-w-25 text-center">
-                                <a href="#">vehiculos</a>
+                                <a th:href="@{/conocenos}">conócenos</a>
                             </li>
                         </ul>
                     </div>
@@ -274,16 +274,22 @@
                                 <a th:href="@{/}">Principal</a>
                             </li>
                             <li class="footer_nav_item">
-                                <a th:href="@{/conocenos}">Conócenos</a>
-                            </li>
-                            <li class="footer_nav_item">
-                                <a th:href="@{/actividades/lista}">Inicio de Sesión</a>
+                                <a th:href="@{/vuelos/lista}">Vuelos</a>
                             </li>
                             <li class="footer_nav_item">
                                 <a th:href="@{/hoteles/lista}">Hoteles</a>
                             </li>
                             <li class="footer_nav_item">
-                                <a th:href="@{/vuelos/lista}">Vuelos</a>
+                                <a th:href="@{/actividades/lista}">Actividades</a>
+                            </li>
+                            <li class="footer_nav_item">
+                                <a th:href="@{/conocenos}">Conócenos</a>
+                            </li>
+                            <li sec:authorize="!isAuthenticated()" class="footer_nav_item">
+                                <a  th:href="@{/login}">Inicio de Sesión</a>
+                            </li>
+                            <li sec:authorize="isAuthenticated()" class="footer_nav_item">
+                                <a th:href="@{/logout}">Cerrar Sesión</a>
                             </li>
                         </ul>
                     </div>
