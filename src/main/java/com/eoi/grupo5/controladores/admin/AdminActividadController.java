@@ -69,7 +69,7 @@ public class AdminActividadController {
         modelo.addAttribute("actividad", actividad);
         modelo.addAttribute("localizaciones", servicioLocalizacion.buscarEntidades());
         modelo.addAttribute("tipos", servicioTipoActividad.buscarEntidades());
-        return "admin/nuevoActividad";
+        return "admin/nuevaActividad";
     }
 
     @PostMapping("/crear")

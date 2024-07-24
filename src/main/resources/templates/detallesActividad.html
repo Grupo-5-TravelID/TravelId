@@ -68,7 +68,7 @@
           data-image-src="/images/single_background.jpg"
         ></div>
         <div class="home_content">
-          <div class="home_title" th:text="${actividad.getNombre()}">Oferta</div>
+          <div class="home_title" th:text="${actividad.nombre}">Oferta</div>
         </div>
       </div>
 
@@ -84,15 +84,15 @@
               <div class="single_listing">
                 <!-- Actividad Info -->
 
-                <div class="actividad_info">
+                <div class="hotel_info">
                   <!-- Title -->
                   <div
-                    class="actividad_title_container d-flex flex-lg-row flex-column gap-lg-5"
+                    class="hotel_title_container d-flex flex-lg-row flex-column gap-lg-5"
                   >
-                    <div class="actividad_title_content">
-                      <h1 class="actividad_title" th:text="${actividad.getNombre()}">Nombre Actividad</h1>
+                    <div class="hotel_title_content">
+                      <h1 class="hotel_title" th:text="${actividad.getNombre()}">Nombre Actividad</h1>
 
-                      <div class="actividad_location"
+                      <div class="hotel_location"
                            th:text="${actividad.getLocalizacion().getNombre()} + ', '
                            + ${actividad.getLocalizacion().getPais().getNombre()}">
                         Localización del Actividad
@@ -100,54 +100,46 @@
                       <div th:if="${precioActual != null}" th:text="${precioActual.valor} + ' €'">Precio</div>
                       <div th:if="${precioActual == null}">Precio no disponible</div>
                     </div>
-                    <div class="actividad_title_button ml-lg-auto text-lg-right">
+                    <div class="hotel_title_button ml-lg-auto text-lg-right">
                       <div class="button book_button trans_200">
                         <a href="#"
                           >book<span></span><span></span><span></span
                         ></a>
                       </div>
-                      <div class="actividad_map_link_container">
-                        <div class="actividad_map_link">See Location on Map</div>
+                      <div class="hotel_map_link_container">
+                        <div class="hotel_map_link">See Location on Map</div>
                       </div>
                     </div>
                   </div>
 
                   <!-- Listing Image -->
-                  <div class="actividad_image" th:object="${actividad}">
+                  <div class="hotel_image" th:object="${actividad}">
                     <img th:src="@{'/imagenes/' + ${imagenActividad}}" alt="Imagen del actividad" />
                     <div
-                      class="actividad_review_container d-flex flex-column align-items-center justify-content-center"
-                    >
-                      <div class="actividad_review">
-                        <div class="actividad_review_content">
-                          <div class="actividad_review_title">very good</div>
-                          <div class="actividad_review_subtitle">100 reviews</div>
-                        </div>
-                        <div class="actividad_review_rating text-center">8.1</div>
-                      </div>
+                      class="hotel_review_container d-flex flex-column align-items-center justify-content-center">
                     </div>
                   </div>
 
                   <!-- Actividad Gallery -->
-                  <div class="actividad_gallery">
-                    <div class="actividad_slider_container">
-                      <div class="owl-carousel owl-theme actividad_slider">
-                        <!-- Actividad Gallery Slider Item -->
+                  <div class="hotel_gallery">
+                    <div class="hotel_slider_container">
+                      <div class="owl-carousel owl-theme hotel_slider">
+                        <!-- Hotel Gallery Slider Item -->
                         <div class="owl-item" th:each="imagen : ${actividad.imagenes}">
                           <a
-                            class="colorbox cboxElement"
-                            th:href="@{'/imagenes/' + ${imagen.url}}"
+                                  class="colorbox cboxElement"
+                                  th:href="@{'/imagenes/' + ${imagen.url}}"
                           >
                             <img
-                              th:src="'/imagenes/' + ${imagen.url}"
-                              alt="https://unsplash.com/@jbriscoe"
+                                    th:src="'/imagenes/' + ${imagen.url}"
+                                    alt="https://unsplash.com/@jbriscoe"
                             />
                           </a>
                         </div>
                       </div>
 
                       <!-- Actividad Slider Nav - Prev -->
-                      <div class="actividad_slider_nav actividad_slider_prev">
+                      <div class="hotel_slider_nav hotel_slider_prev">
                         <svg
                           version="1.1"
                           id="Layer_6"
@@ -162,7 +154,7 @@
                           xml:space="preserve"
                         >
                           <defs>
-                            <linearGradient id="actividad_grad_prev">
+                            <linearGradient id="hotel_grad_prev">
                               <stop offset="0%" stop-color="#fa9e1b" />
                               <stop offset="100%" stop-color="#8d4fff" />
                             </linearGradient>
@@ -184,7 +176,7 @@
                       </div>
 
                       <!-- Actividad Slider Nav - Next -->
-                      <div class="actividad_slider_nav actividad_slider_next">
+                      <div class="hotel_slider_nav hotel_slider_next">
                         <svg
                           version="1.1"
                           id="Layer_7"
@@ -199,7 +191,7 @@
                           xml:space="preserve"
                         >
                           <defs>
-                            <linearGradient id="actividad_grad_next">
+                            <linearGradient id="hotel_grad_next">
                               <stop offset="0%" stop-color="#fa9e1b" />
                               <stop offset="100%" stop-color="#8d4fff" />
                             </linearGradient>
@@ -223,7 +215,7 @@
                   </div>
 
                   <!-- Actividad Info Text -->
-                  <div class="actividad_info_text">
+                  <div class="hotel_info_text">
                     <p th:text="${actividad.descripcion}">
                       Descripción del Actividad
                     </p>
@@ -245,7 +237,7 @@
                       <div class="col-lg-2">
                         <div class="room_image">
                           <img
-                                  th:src="@{${actividadRecomendado.imagenes.isEmpty()} ? '/images/Actividades/Nobu_Actividad.jpg' : '/imagenes/' + ${actividadRecomendado.imagenes.stream().findFirst().get().url}}"
+                                  th:src="@{${actividadRecomendado.imagenes.isEmpty()} ? '/images/Hoteles/Nobu_Hotel.jpg' : '/imagenes/' + ${actividadRecomendado.imagenes.stream().findFirst().get().url}}"
                             alt="https://unsplash.com/@grovemade"
                           />
                         </div>
