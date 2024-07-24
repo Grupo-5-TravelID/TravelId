@@ -22,9 +22,6 @@ import java.util.List;
 @Repository
 public interface RepoActividad extends JpaRepository<Actividad, Integer>, JpaSpecificationExecutor<Actividad> {
 
-    Page<Actividad> findAllBy(@Nullable Specification<Actividad> spec, @Nonnull Pageable pageable);
-
-    List<Actividad> findByFechaInicioGreaterThanEqualAndFechaFinLessThanEqual(LocalDateTime fechaInicio, LocalDateTime fechaFin);
-
+    Page<Actividad> findAll(@Nullable Specification<Actividad> spec, @Nonnull Pageable pageable);
 
 }

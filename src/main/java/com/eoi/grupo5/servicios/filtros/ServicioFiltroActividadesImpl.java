@@ -2,8 +2,8 @@ package com.eoi.grupo5.servicios.filtros;
 
 import com.eoi.grupo5.mapper.ActividadesMapper;
 import com.eoi.grupo5.modelos.Actividad;
-import com.eoi.grupo5.modelos.filtros.ActividadDto;
-import com.eoi.grupo5.modelos.filtros.PaginaRespuestaActividades;
+import com.eoi.grupo5.dtos.ActividadDto;
+import com.eoi.grupo5.paginacion.PaginaRespuestaActividades;
 import com.eoi.grupo5.repos.RepoActividad;
 import com.eoi.grupo5.repos.filtros.FiltroActividades;
 import com.eoi.grupo5.repos.specification.ActividadSpec;
@@ -26,7 +26,7 @@ public class ServicioFiltroActividadesImpl implements ServicioFiltroActividades 
     @Override
     public PaginaRespuestaActividades<ActividadDto> buscarActividades(FiltroActividades filtro, int page, int size) {
         Specification<Actividad> spec = ActividadSpec.filtrarPor(filtro);
-        Page<Actividad> resultadoPagina = repoActividad.findAllBy(spec, PageRequest.of(page, size));
+        Page<Actividad> resultadoPagina = repoActividad.findAll(spec, PageRequest.of(page, size));
         return actividadMapper.paginaRespuestaActividades(resultadoPagina);
     }
 }

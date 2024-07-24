@@ -17,8 +17,8 @@ public class BusquedaCriteriaActividades {
     private Integer tipoId;
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaFin;
-    private int page = 0;
-    private int size = 10;
+    private Integer page = 0;
+    private Integer size = 10;
 
 
 }
