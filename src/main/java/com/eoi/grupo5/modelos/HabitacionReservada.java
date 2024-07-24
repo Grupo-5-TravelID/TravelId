@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -34,11 +35,13 @@ public class HabitacionReservada {
     @NotNull(message = "La reserva no puede ser nula")
     private Reserva reserva;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "FechaInicio", nullable = false)
     @NotNull(message = "Debes introducir una fecha de inicio de reserva")
     @FutureOrPresent(message = "La fecha de Inicio debe ser en el presente o en el futuro")
     private LocalDateTime fechaInicio;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "FechaFin", nullable = false)
     @NotNull(message = "Debes introducir una fecha de fin de reserva")
     @Future(message = "La fecha de fin debe ser en el futuro")

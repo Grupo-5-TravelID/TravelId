@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -33,11 +34,13 @@ public class AsientoReservado {
     @NotNull(message = "Debes asignar una reserva")
     private Reserva reserva;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "fechaVuelo")
     @NotNull(message = "Debes introducir una fecha de vuelo")
     @FutureOrPresent(message = "La fecha de vuelo debe ser en el presente o en el futuro")
     private LocalDateTime fechaVuelo;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Column(name = "horaVuelo")
     @NotNull(message = "Debes introducir una hora de vuelo")
     @FutureOrPresent(message = "La hora de vuelo debe ser en el presente o en el futuro")
