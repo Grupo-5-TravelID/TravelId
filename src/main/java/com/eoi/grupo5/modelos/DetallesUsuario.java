@@ -30,7 +30,6 @@ public class DetallesUsuario {
     private String dni;
 
     @Column(name = "edad")
-    @NotNull(message = "Introduce tu edad")
     @Min(value = 18, message = "Debes tener al menos 18 años")
     private Integer edad;
 
@@ -39,12 +38,10 @@ public class DetallesUsuario {
     private String telefono;
 
     @Column(name="nombre", length = 45)
-    @NotNull(message = "Introduce un nombre")
     @Size(max = 45, message = "El nombre no puede tener más de 45 caracteres")
     private String nombre;
 
     @Column(name="apellidos", length = 45)
-    @NotNull(message = "Introduce tus apellidos")
     @Size(max = 45, message = "Los apellidos no pueden tener más de 45 caracteres")
     private String apellidos;
 
