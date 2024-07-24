@@ -1,7 +1,10 @@
 package com.eoi.grupo5.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +20,10 @@ public class Precio {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private Double precio;
+    @Column(nullable = false)
+    @NotNull(message = "El valor no puede ser nulo")
+    @Min(value = 0, message = "El valor debe ser mayor o igual a 0")
+    private Double valor;
 
     @ManyToOne
     @JoinColumn(name = "idHabitacion")
@@ -31,7 +37,14 @@ public class Precio {
     @JoinColumn(name = "idActividad")
     private Actividad actividad;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = false)
+    @NotNull(message = "La fecha de Inicio no puede ser nula")
     private LocalDateTime fechaInicio;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(nullable = false)
+    @NotNull(message = "La fecha de fin no puede ser nula")
     private LocalDateTime fechaFin;
 
 }

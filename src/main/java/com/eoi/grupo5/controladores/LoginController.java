@@ -4,6 +4,7 @@ import com.eoi.grupo5.modelos.DetallesUsuario;
 import com.eoi.grupo5.modelos.Usuario;
 import com.eoi.grupo5.repos.RepoDetallesUsuario;
 import com.eoi.grupo5.repos.RepoUsuario;
+import jakarta.validation.Valid;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String processLogin(@RequestParam String username, @RequestParam String password, Model model){
+    public String processLogin(@Valid @RequestParam String username, @RequestParam String password, Model model){
         Optional<Usuario> optionalUsuario = repoUsuario.findByNombreUsuario(username);
         if (optionalUsuario.isPresent() && optionalUsuario.get().getPassword().equals(bCryptPasswordEncoder.encode(password))){
             Usuario usuario = optionalUsuario.get();
